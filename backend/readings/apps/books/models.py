@@ -14,7 +14,7 @@ class Genre(models.Model):
         return f"{self.name}"
 
 
-class Serie(models.Model):
+class Book(models.Model):
     """
     Serie Model
     """
@@ -22,6 +22,7 @@ class Serie(models.Model):
     provider = models.CharField(max_length=255)
     genre = models.ForeignKey(Genre, on_delete = models.CASCADE)
     year = models.DateField()
+    pages = models.IntegerField()
 
     def __str__(self):
         return f"{self.name}"

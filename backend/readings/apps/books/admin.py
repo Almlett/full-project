@@ -2,7 +2,7 @@
 Autogenerate admin file
 """
 from django.contrib import admin
-from .models import Genre, Serie	# pylint: disable=relative-beyond-top-level
+from .models import Genre, Book	# pylint: disable=relative-beyond-top-level
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
@@ -16,15 +16,15 @@ class GenreAdmin(admin.ModelAdmin):
     list_display = (
         "name",
     )
-@admin.register(Serie)
-class SerieAdmin(admin.ModelAdmin):
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
     """
-    Serie Admin
+    Book Admin
     """
 
     fields = (
-        "name","provider","genre","year",
+        "name","provider","genre","year","pages",
     )
     list_display = (
-        "name","provider","genre","year",
+        "name","provider","genre","year","pages",
     )

@@ -1,14 +1,30 @@
+"""
+Autogenerate admin file
+"""
 from django.contrib import admin
-from .models import Movie
+from .models import Genre, Movie	# pylint: disable=relative-beyond-top-level
 
-@admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    """
+    Genre Admin
+    """
+
     fields = (
-        "title", "genre", "year", "created_date", "updated_date",
+        "name",
     )
     list_display = (
-        "title", "genre", "year", "created_date", "updated_date",
+        "name",
     )
-    readonly_fields = (
-        "created_date", "updated_date",
+@admin.register(Movie)
+class MovieAdmin(admin.ModelAdmin):
+    """
+    Movie Admin
+    """
+
+    fields = (
+        "name","genre",
+    )
+    list_display = (
+        "name","genre",
     )

@@ -23,6 +23,14 @@ services:
       - POSTGRES_DB=footage_dev
       - PGUSER=admin
 
+  #footage-db-test:
+  #  image: postgres:12-alpine
+  #  environment:
+  #    - POSTGRES_USER=admin
+  #    - POSTGRES_PASSWORD=password
+  #    - POSTGRES_DB=footage_dev
+  #    - PGUSER=admin
+
   user:
     build: ./backend/user
     command: python manage.py runserver 0.0.0.0:8002
@@ -33,9 +41,9 @@ services:
     env_file:
       - ./backend/user/.env.dev
     depends_on: 
-      - user-db
+      - mysql-db
 
-  user-db:
+  mysql-db:
     build: ./databases/user
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
@@ -43,6 +51,18 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=secret_pass
-      - MYSQL_DATABASE=user_dev
+      - MYSQL_DATABASE=mysql_dev
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=pass1234
+
+  readings:
+    build: ./backend/readings
+    command: python manage.py runserver 0.0.0.0:8003
+    volumes:
+      - ./backend/readings:/usr/src/app/
+    ports:
+      - 8003:8003
+    env_file:
+      - ./backend/readings/.env.dev
+    depends_on: 
+      - mysql-db

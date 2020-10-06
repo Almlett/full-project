@@ -2,7 +2,7 @@
 Autogenerate serializers file
 """
 from rest_framework import serializers
-from .models import Genre, Movie	# pylint: disable=relative-beyond-top-level
+from .models import Genre, Book	# pylint: disable=relative-beyond-top-level
 
 class GenreSerializer(serializers.ModelSerializer):
     """
@@ -17,15 +17,15 @@ class GenreSerializer(serializers.ModelSerializer):
         model = Genre
         fields = '__all__'
 
-class MovieSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     """
-    Movie Serialzier
+    Book Serialzier
     """
 
     class Meta: 	# pylint: disable=too-few-public-methods
         """
-        Select all fields from model Movie
+        Select all fields from model Book
         """
 
-        model = Movie
+        model = Book
         fields = '__all__'

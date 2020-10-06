@@ -10,9 +10,9 @@ class GenreConfig(AppConfig):
 
     name = 'genres'
 
-class SerieConfig(AppConfig):
+class BookConfig(AppConfig):
     """
-    Serie App
+    Book App
     """
 
-    name = 'series'
+    name = 'books'

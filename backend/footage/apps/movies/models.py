@@ -1,11 +1,26 @@
+"""
+MODEL
+"""
 from django.db import models
 
-class Movie(models.Model):
-    title = models.CharField(max_length=255)
-    genre = models.CharField(max_length=255)
-    year = models.CharField(max_length=4)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
+
+class Genre(models.Model):
+    """
+    Genre Model
+    """
+    name = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.name}"
+
+
+class Movie(models.Model):
+    """
+    Movie Model
+    """
+    name = models.CharField(max_length=255)
+    genre = models.ForeignKey(Genre, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name}"
+        

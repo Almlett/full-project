@@ -1,7 +1,18 @@
 Pendientes
+    test models
     footage
     user
+    readings
         Static y medios
+
+respaldos automaticos
+Autogenerar 
+    Apartir de modelo
+    test
+    serializer
+    viewset
+    Factory boy
+    mock
 
 ___________________________________________
 Prometheus + Grafana
@@ -45,6 +56,7 @@ Kubernetes
     Metricas
         Prometheus + Grafana
 NGINX
+
 TDD
     Pytest
     Jest
@@ -56,17 +68,19 @@ CI/CD
         Performance testing
 
 Backend
+
     Django + PostgreSQL + Gunicorn
         Series
         Peliculas
-        Pytest
 
     Express + Mongo
         Animes
         Mangas
+        Manwhas
 
-    Flask + PostgreSQL
+    Django + MySQL + Gunicorn
         Libros
+        Novelas
 
     Django + MySQL + Gunicorn
         Usuarios
@@ -76,5 +90,6 @@ Backend
 
 
 Frontend
+
     ReactJS
-    ReactNative
+    ReactNative 
