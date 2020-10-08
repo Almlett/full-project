@@ -3,7 +3,8 @@ version: '3.7'
 services:
   footage:
     build: ./backend/footage
-    command: python manage.py runserver 0.0.0.0:8001
+    #command: python manage.py runserver 0.0.0.0:8001
+    command: gunicorn footage.wsgi:application --bind 0.0.0.0:8001
     volumes:
       - ./backend/footage:/usr/src/app/
     ports:
@@ -66,3 +67,28 @@ services:
       - ./backend/readings/.env.dev
     depends_on: 
       - mysql-db
+
+  webgateway:
+    build: ./backend/webgateway
+    command: python manage.py runserver 0.0.0.0:8004
+    #command: gunicorn proj_webgateway.wsgi:application --bind 0.0.0.0:8004
+    volumes:
+      - ./backend/webgateway:/usr/src/app/
+    ports:
+      - 8004:8004
+    env_file:
+      - ./backend/webgateway/.env.dev
+    depends_on: 
+      - mysql-webgateway-db
+
+  mysql-webgateway-db:
+    build: ./databases/webgateway
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./databases/webgateway/backup:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret_pass
+      - MYSQL_DATABASE=apigateway_dev
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=password

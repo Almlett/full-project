@@ -15,13 +15,21 @@ Autogenerar
     mock
 
 ___________________________________________
-Prometheus + Grafana
-Alert manager
+Gunicorn
+
 Nginx
+
 CI/CD
     Jenkins
     Github actions  
     Gitlab CI
+    
+
+Prometheus + Grafana
+Alert manager
+
+
+
 Test
     Pytest
     Jest
@@ -30,8 +38,8 @@ Test
     Pruebas de regresion
     pruebas funcionales
     Performance testing
+
 Gunicorn
-Flask
 Poetry
 Code Linters
     Pylint
